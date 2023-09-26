@@ -4,18 +4,13 @@ on: [push]
 
 jobs:
   
-  build:
+  security:
+    name: security
     permissions: write-all
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Run a one-line script
-      run: echo Hello world
-    - name: Run a multi-line script
-      run: |
-        echo add other actions
-        echo test and deploy your project
+    - name: Check out code
+      uses: actions/checkout@v2
     - name: Bandit Scan
       uses: shundor/python-bandit-scan@v1.0
       with: 
@@ -24,5 +19,12 @@ jobs:
         confidence: UNDEFINED
         excluded_paths: "*.txt"
         exit_zero: true
-    - name: Run a one-line script
-      run: cat results.ariff
+    - name: Download artifact
+      uses: actions/download-artifact@v1.0.0
+      with:
+        name: results.sarif
+    - name: validation
+      run: source ./test.sh
+
+
+      
