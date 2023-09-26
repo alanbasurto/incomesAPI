@@ -19,10 +19,6 @@ jobs:
         confidence: UNDEFINED
         excluded_paths: "*.txt"
         exit_zero: true
-    - name: Download artifact
-      uses: actions/download-artifact@v1.0.0
-      with:
-        name: results.sarif
     - name: validation
       run: source ./test.sh
 
