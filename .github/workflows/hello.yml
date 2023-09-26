@@ -14,3 +14,11 @@ jobs:
       run: |
         echo add other actions
         echo test and deploy your project
+    - name: Bandit Scan
+      uses: shundor/python-bandit-scan@v1.0
+      with: 
+        path: "./src/app.py"
+        level: UNDEFINED
+        confidence: UNDEFINED
+        excluded_paths: "*.txt"
+        exit_zero: true       
