@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 array=($(grep '"SEVERITY.HIGH":' results.sarif))
 number=(${array[1]:0:$((${#array[1]}-1))})
-if [ $((number)) -gt 0 ];then
-echo "there is a SEVERITY.HIGH"
+if [ $((number)) -eq 0 ];then
+ echo "there is noy any issue"
+ echo "flag=false" >> $GITHUB_ENV
+ echo "flag set to false"
+else 
+ echo "there is a SEVERITY.HIGH"
+ echo "flag=true" >> $GITHUB_ENV 
+ echo "flag set to true" 
 fi
