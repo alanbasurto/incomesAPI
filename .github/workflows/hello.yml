@@ -2,8 +2,7 @@ name: CI
 
 on:
   push:
-    tags:
-      - 'v*'
+    tags:[v*]
 
 jobs:
   
@@ -30,11 +29,6 @@ jobs:
       with:
         images: |
           alanbasurto/apifgh
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
