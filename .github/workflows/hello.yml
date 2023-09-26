@@ -23,4 +23,6 @@ jobs:
         level: UNDEFINED
         confidence: UNDEFINED
         excluded_paths: "*.txt"
-        exit_zero: true       
+        exit_zero: true
+    - name: Run a one-line script
+      run: cat results.ariff
