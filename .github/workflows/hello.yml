@@ -30,7 +30,6 @@ jobs:
     #     source ./test.sh
     - name: changelog
       run: |
-        echo "'VERSION='grep "## v" ./src/CHANGELOG.md | awk -F ' ' '{ print $2 }'" >> "$GITHUB_ENV"
         grep "## v" ./src/CHANGELOG.md | awk -F ' ' '{ print $2 }
     # - name: Docker meta
     #   if: env.FLAG == 'false'
