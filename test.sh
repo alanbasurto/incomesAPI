@@ -4,11 +4,9 @@ number=(${array[1]:0:$((${#array[1]}-1))})
 if [ $((number)) -eq 0 ];then
  echo "noissue"
  echo "FLAG=false" >> "$GITHUB_ENV"
- echo "action_stateeee=red" >> "$GITHUB_ENV"
  echo "FLAG set to false"
 else 
  echo "there is a SEVERITY.HIGH"
  echo "FLAG=true" >> "$GITHUB_ENV" 
  echo "FLAG set to true" 
- echo "action_stateeee=green" >> "$GITHUB_ENV"
 fi
