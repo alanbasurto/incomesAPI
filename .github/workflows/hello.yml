@@ -29,6 +29,8 @@ jobs:
       id: step_two
       run: |
         printf '%s\n' "$action_state" # This will output 'yellow'
+        printf '%s\n' "$flag" # This will output 'flag'
+        printf '%s\n' "$action_stateeee" # This will output 'yellow'
     - name: Docker meta
       if: ${{ env.flag == true }}
       id: meta
