@@ -33,7 +33,7 @@ jobs:
       run: |
         version= sed -n '1p' | grep "## v" | awk -F ' ' '{ print $2 }'
         echo "VERSION=$(sed -n '1p' ./src/CHANGELOG.md | grep "## v" | awk -F ' ' '{ print $2 }')" >> "$GITHUB_ENV"
-        run: echo ::set-output name=tag::${VERSION}
+        run: echo ::set-output name=tag::green
     - name: Test set output
       run: echo ${{ steps.vars.outputs.tag }}
     # - name: Docker meta
