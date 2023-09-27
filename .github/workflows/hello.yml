@@ -34,7 +34,7 @@ jobs:
         echo "$env.flag == true"
         echo "$flag == true"
     - name: Docker meta
-      if: $env.flag == true
+      if: $flag == true
       id: meta
       uses: docker/metadata-action@v5
       with:
