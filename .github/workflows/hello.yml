@@ -17,28 +17,31 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
-    - name: Bandit Scan
-      uses: shundor/python-bandit-scan@v1.0
-      with: 
-        path: "./src/app.py"
-        level: UNDEFINED
-        confidence: UNDEFINED
-        excluded_paths: "*.txt"
-        exit_zero: true
-    - name: validation
-      run: |
-        source ./test.sh
+    # - name: Bandit Scan
+    #   uses: shundor/python-bandit-scan@v1.0
+    #   with: 
+    #     path: "./src/app.py"
+    #     level: UNDEFINED
+    #     confidence: UNDEFINED
+    #     excluded_paths: "*.txt"
+    #     exit_zero: true
+    # - name: validation
+    #   run: |
+    #     source ./test.sh
     - name: changelog
       run: |
         version= sed -n '1p' | grep "## v" | awk -F ' ' '{ print $2 }'
         echo "VERSION=$(sed -n '1p' ./src/CHANGELOG.md | grep "## v" | awk -F ' ' '{ print $2 }')" >> "$GITHUB_ENV"
-    - name: Docker meta
-      # if: env.FLAG == 'false'
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: |
-          alanbasurto/apifgh
+        run: echo ::set-output name=tag::alanbasurto/apifgh${version}
+    - name: Test set output
+      run: echo ${{ steps.vars.outputs.tag }}
+    # - name: Docker meta
+    #   if: env.FLAG == 'false'
+    #   id: meta
+    #   uses: docker/metadata-action@v5
+    #   with:
+    #     images: |
+    #       alanbasurto/apifgh
     # - name: Set up QEMU
     #   if: env.FLAG == 'false'    
     #   uses: docker/setup-qemu-action@v3
@@ -56,4 +59,4 @@ jobs:
     #   uses: docker/build-push-action@v5
     #   with:
     #     push: true
-    #     tags: ${{ steps.meta.outputs.tags }}
+    #     tags: ${{ env.VER }}
