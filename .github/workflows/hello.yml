@@ -28,6 +28,11 @@ jobs:
     - name: validation
       run: |
         source ./test.sh
+    - name: changelog
+      if: env.FLAG == 'false'
+      run: |
+        cat ./src/changelog.md
+        grep "## " ./src/changelog.md | cat
     - name: Docker meta
       if: env.FLAG == 'false'
       id: meta
