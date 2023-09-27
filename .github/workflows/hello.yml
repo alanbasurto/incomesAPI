@@ -1,6 +1,9 @@
 name: CI
 
-on: [push]
+on:  
+  push:
+    branches:
+      - 'main'
 
 
 jobs:
@@ -35,8 +38,8 @@ jobs:
       with:
         images: |
           alanbasurto/apifgh
-        # tags: |
-        #   type=semver,pattern={{major}}.{{minor}}
+        tags: |
+          type=semver,pattern={{major}}.{{minor}}
     - name: Set up QEMU
       if: env.FLAG == 'false'    
       uses: docker/setup-qemu-action@v3
