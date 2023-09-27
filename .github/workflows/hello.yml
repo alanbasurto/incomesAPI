@@ -33,6 +33,8 @@ jobs:
         ls
         cd ./src
         pwd
+        ls
+        cat CHANGELOG.md
     # - name: Docker meta
     #   if: env.FLAG == 'false'
     #   id: meta
