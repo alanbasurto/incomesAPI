@@ -21,7 +21,8 @@ jobs:
         excluded_paths: "*.txt"
         exit_zero: true
     - name: validation
-      run: source ./test.sh
+      run: source ./test.sh \
+        echo "the boolean value is $flag"
     - name: Docker meta
       if: env.flag == false
       id: meta
@@ -29,8 +30,8 @@ jobs:
       with:
         images: |
           alanbasurto/apifgh
-        tags: |
-          type=semver,pattern={{major}}.{{minor}}
+        # tags: |
+        #   type=semver,pattern={{major}}.{{minor}}
     - name: Set up QEMU
       if: env.flag == false
       uses: docker/setup-qemu-action@v3
