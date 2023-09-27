@@ -30,14 +30,15 @@ jobs:
     #     source ./test.sh
     - name: changelog
       run: |
-        grep "## v" ./src/CHANGELOG.md | awk -F ' ' '{ print $2 }'
-    # - name: Docker meta
-    #   if: env.FLAG == 'false'
-    #   id: meta
-    #   uses: docker/metadata-action@v5
-    #   with:
-    #     images: |
-    #       alanbasurto/apifgh
+        version= grep "## v" ./src/CHANGELOG.md | awk -F ' ' '{ print $2 }'
+        "VERSION=version" >> "$GITHUB_ENV"
+    - name: Docker meta
+      # if: env.FLAG == 'false'
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: |
+          alanbasurto/apifgh
     # - name: Set up QEMU
     #   if: env.FLAG == 'false'    
     #   uses: docker/setup-qemu-action@v3
