@@ -30,12 +30,7 @@ jobs:
     #     source ./test.sh
     - name: changelog
       run: |
-        ls
-        cd ./src
-        pwd
-        ls
-        cat CHANGELOG.md
-        grep "## v" CHANGELOG.md | cat
+        grep "## v" ./src/CHANGELOG.md | cat
     # - name: Docker meta
     #   if: env.FLAG == 'false'
     #   id: meta
