@@ -28,11 +28,6 @@ jobs:
     - name: validation
       run: |
         source ./test.sh
-        echo "the boolean value is ${{ env.FLAG }}"
-    - name: Use the value
-      id: step_two
-      run: |
-        echo "$FLAG == true"
     - name: Docker meta
       if: env.FLAG == 'false'
       id: meta
@@ -40,21 +35,21 @@ jobs:
       with:
         images: |
           alanbasurto/apifgh
-    - name: Set up QEMU
-      if: env.FLAG == 'false'    
-      uses: docker/setup-qemu-action@v3
-    - name: Set up Docker Buildx
-      if: env.FLAG == 'false'
-      uses: docker/setup-buildx-action@v3
-    - name: Login to Docker Hub
-      if: env.FLAG == 'false'
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build and push with flag
-      if: env.FLAG == 'false'
-      uses: docker/build-push-action@v5
-      with:
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
+    # - name: Set up QEMU
+    #   if: env.FLAG == 'false'    
+    #   uses: docker/setup-qemu-action@v3
+    # - name: Set up Docker Buildx
+    #   if: env.FLAG == 'false'
+    #   uses: docker/setup-buildx-action@v3
+    # - name: Login to Docker Hub
+    #   if: env.FLAG == 'false'
+    #   uses: docker/login-action@v3
+    #   with:
+    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+    # - name: Build and push with flag
+    #   if: env.FLAG == 'false'
+    #   uses: docker/build-push-action@v5
+    #   with:
+    #     push: true
+    #     tags: ${{ steps.meta.outputs.tags }}

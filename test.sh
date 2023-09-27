@@ -9,5 +9,4 @@ else
  echo "there is a SEVERITY.HIGH"
  echo "FLAG=true" >> "$GITHUB_ENV" 
  echo "FLAG set to true"
- echo "FLAG set to true2" 
 fi
