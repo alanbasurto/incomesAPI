@@ -1,4 +1,4 @@
-## v0.1.2
+## v1.1.2
 
 Initial release of the _Delete User Data_ extension.
 ## v0.1.1

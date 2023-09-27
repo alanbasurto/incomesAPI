@@ -58,4 +58,4 @@ jobs:
       with:
         push: true
         image: alanbasurto/apifgh
-        tags: latest
+        tags: ${{ env.VERSION }}, latest
