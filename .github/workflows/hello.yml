@@ -22,9 +22,9 @@ jobs:
         exit_zero: true
     - name: validation
       run: source ./test.sh \
-        echo "the boolean value is $flag"
+        echo "the boolean value is ${{ env.flag }}"
     - name: Docker meta
-      if: env.flag == false
+      if: ${{ env.flag == true }}
       id: meta
       uses: docker/metadata-action@v5
       with:
