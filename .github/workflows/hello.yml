@@ -31,7 +31,9 @@ jobs:
     - name: changelog
       run: |
         grep "## v" ./src/CHANGELOG.md | cat
-        grep "## v" ./src/CHANGELOG.md | awk -F " " '{ print $1 }'
+        grep "## v" ./src/CHANGELOG.md | awk -F " " { print $0 }'
+        grep "## v" ./src/CHANGELOG.md | awk -F " " { print $1 }'
+        grep "## v" ./src/CHANGELOG.md | awk -F " " { print $2 }'
     # - name: Docker meta
     #   if: env.FLAG == 'false'
     #   id: meta
