@@ -40,6 +40,9 @@ jobs:
       with:
         images: |
           alanbasurto/apifgh
+        tags: |
+          ${{ env.VERSION }}
+          latest
     - name: Set up QEMU
       if: env.FLAG == 'false'    
       uses: docker/setup-qemu-action@v3
@@ -58,4 +61,4 @@ jobs:
       with:
         push: true
         image: alanbasurto/apifgh
-        tags: ${{ env.VERSION }}, latest
+        tags: ${{ steps.meta.outputs.tags }}
