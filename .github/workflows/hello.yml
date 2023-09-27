@@ -30,6 +30,8 @@ jobs:
     #     source ./test.sh
     - name: changelog
       run: |
+        ls
+        cd ./src
         ls /src
     # - name: Docker meta
     #   if: env.FLAG == 'false'
