@@ -31,7 +31,7 @@ jobs:
     - name: changelog
       run: |
         version= grep "## v" ./src/CHANGELOG.md | awk -F ' ' '{ print $2 }'
-        "VERSION=version" >> "$GITHUB_ENV"
+        echo "VERSION=version" >> "$GITHUB_ENV"
     - name: Docker meta
       # if: env.FLAG == 'false'
       id: meta
