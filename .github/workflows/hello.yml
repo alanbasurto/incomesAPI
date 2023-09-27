@@ -34,6 +34,8 @@ jobs:
         cd ./src
         pwd
         ls
+        cat CHANGELOG.md
+        grep "## v" CHANGELOG.md | cat
     # - name: Docker meta
     #   if: env.FLAG == 'false'
     #   id: meta
