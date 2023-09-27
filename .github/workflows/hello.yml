@@ -29,7 +29,6 @@ jobs:
     #   run: |
     #     source ./test.sh
     - name: changelog
-      if: env.FLAG == 'false'
       run: |
         ls /src
     # - name: Docker meta
