@@ -31,8 +31,10 @@ jobs:
         printf '%s\n' "$action_state" # This will output 'yellow'
         printf '%s\n' "$flag" # This will output 'flag'
         printf '%s\n' "$action_stateeee" # This will output 'yellow'
+        echo "$env.flag == true"
+        echo "$flag == true"
     - name: Docker meta
-      if: ${{ env.flag == true }}
+      if: $env.flag == true
       id: meta
       uses: docker/metadata-action@v5
       with:
